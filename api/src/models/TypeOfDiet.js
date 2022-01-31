@@ -1,8 +1,10 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
-sequelize.define('typeOfDiet', {
+module.exports = (sequelize) => {
+  sequelize.define("typeOfDiet", {
     nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    }
-})
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  });
+};
