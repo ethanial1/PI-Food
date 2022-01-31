@@ -1,8 +1,10 @@
-const getRecipies = async (req, res) => {
+const getRecipes = async (req, res) => {
     try {
         const name = req.query.name;
         if(!name) throw new Error("Parametro name requerido");
-
+        
+        console.log(name);
+        res.json({name})
 
 
     } catch (error) {
@@ -12,9 +14,24 @@ const getRecipies = async (req, res) => {
     }
 }
 
+const getRecipesById = (req, res) => {
+
+}
+
+const getTypes = (req, res) => {
+
+}
+
+const saveNewRecipe = (req, res) => {
+
+}
+
 
 
 
 module.exports = {
-    getRecipies
+    getRecipes,
+    getRecipesById,
+    getTypes,
+    saveNewRecipe
 }
