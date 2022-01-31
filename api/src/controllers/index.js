@@ -9,6 +9,16 @@ const getRecipes = async (req, res) => {
             res.json(recetasByName);
             return;
         }
+    } catch(w){}
+}
+
+const getRecipes = async (req, res) => {
+    try {
+        const name = req.query.name;
+        if(!name) throw new Error("Parametro name requerido");
+        
+        console.log(name);
+        res.json({name})
 
         const recipes = await getAllRecipes();
         res.json(recipes);
