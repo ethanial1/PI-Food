@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Sequelize } = require('sequelize');
+const { Sequelize, Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const {
@@ -34,11 +34,12 @@ const { Recipe, TypeOfDiet } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Recipe.belongsToMany(TypeOfDiet, { through: "TypeOfDiet" });
-TypeOfDiet.belongsToMany(Recipe, { through: "Recipe" });
+Recipe.belongsToMany(TypeOfDiet, { through: "recipe_diet" });
+TypeOfDiet.belongsToMany(Recipe, { through: "recipe_diet" });
 
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
+  Op
 };

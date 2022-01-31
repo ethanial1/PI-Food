@@ -1,9 +1,17 @@
-const getRecipies = async (req, res) => {
+const { getAllRecipes, getAllRecipesByName } = require('./controllerRequet');
+
+const getRecipes = async (req, res) => {
     try {
         const name = req.query.name;
-        if(!name) throw new Error("Parametro name requerido");
 
+        if(name) {
+            const recetasByName = await getAllRecipesByName(name);
+            res.json(recetasByName);
+            return;
+        }
 
+        const recipes = await getAllRecipes();
+        res.json(recipes);
 
     } catch (error) {
         res.status(400).json({
@@ -12,9 +20,24 @@ const getRecipies = async (req, res) => {
     }
 }
 
+const getRecipesById = (req, res) => {
+
+}
+
+const getTypes = (req, res) => {
+
+}
+
+const saveNewRecipe = (req, res) => {
+
+}
+
 
 
 
 module.exports = {
-    getRecipies
+    getRecipes,
+    getRecipesById,
+    getTypes,
+    saveNewRecipe
 }
