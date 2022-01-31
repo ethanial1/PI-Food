@@ -20,6 +20,14 @@ const getAllRecipesAPI = async () => {
     }
 }
 
+const getRecipesByName = async (name) => {
+    try {
+        let recetas = await axios.get("")
+    } catch (error) {
+        
+    }
+}
+
 
 module.exports = {
     getAllRecipesAPI

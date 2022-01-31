@@ -11,6 +11,7 @@ const getAllRecipes = async () => {
 
 const getAllRecipesByName = async (name) => {
     const recetasDB = await getRecipesByNameDB(name);
+  
 
     return recetasDB;
 }

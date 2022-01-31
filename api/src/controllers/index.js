@@ -9,6 +9,7 @@ const getRecipes = async (req, res) => {
             res.json(recetasByName);
             return;
         }
+        
     } catch(w){}
 }
 
