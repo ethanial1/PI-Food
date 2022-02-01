@@ -18,13 +18,11 @@ const getRecipes = async (req, res) => {
     }
 }
 
-// TODO vamos a recibir un id de tipo "1-DB || 1-API" y en base al segundo argumento
-// vamos a evaluar a donde ir a hacer la petición.
 const getRecipesById = async (req, res) => {
     try {
         const [id, typeRequet] = req.params.idReceta.split('-');
 
-        if(!typeRequet) {
+        if(!typeRequet || !id) {
             let err = new Error("Error en el id");
             err.statusText = "No se especificó un dato valido para hacer la petición";
             throw err;
@@ -38,6 +36,7 @@ const getRecipesById = async (req, res) => {
     }
 }
 
+// TODO constultar los tipos de dietas que existen 
 const getTypes = (req, res) => {
 
 }

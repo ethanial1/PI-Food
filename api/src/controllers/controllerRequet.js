@@ -22,17 +22,21 @@ const getInfoRecetaByid = async (id, type) => {
         let recetas;
         if(type === 'DB') {
             recetas = await getInfoRecetaByIdDB(id);
-            return recetas;
         }
     
         if (type === 'API') {
             recetas = await getRecipeInfoByIdAPI(id);
-            return recetas;
         }
-        
+
+        return recetas;
     } catch (error) {
         return new Error(error);
     }
+}
+
+// TODO obtener la lista de dietas disponibles en la base de datos
+const getTypes = async () => {
+
 }
 
 
