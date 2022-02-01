@@ -1,5 +1,5 @@
 const { getAllRecipiesDB, getRecipesByNameDB } = require('./controllerBD');
-const { getAllRecipesAPI } = require('./controllerAPI');
+const { getAllRecipesAPI, getRecipesByNameAPI } = require('./controllerAPI');
 
 const getAllRecipes = async () => {
     const recipesDB = await getAllRecipiesDB();
@@ -11,9 +11,10 @@ const getAllRecipes = async () => {
 
 const getAllRecipesByName = async (name) => {
     const recetasDB = await getRecipesByNameDB(name);
-  
-
-    return recetasDB;
+    const recetasAPI = await getRecipesByNameAPI(name);
+    const res = [...recetasDB, ...recetasAPI];
+    
+    return res;
 }
 
 

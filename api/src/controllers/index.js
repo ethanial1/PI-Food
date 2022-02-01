@@ -9,30 +9,23 @@ const getRecipes = async (req, res) => {
             res.json(recetasByName);
             return;
         }
+
+        const todasRecetas = await getAllRecipes();
+        res.json(todasRecetas);
         
-    } catch(w){}
-}
-
-const getRecipes = async (req, res) => {
-    try {
-        const name = req.query.name;
-        if(!name) throw new Error("Parametro name requerido");
-        
-        console.log(name);
-        res.json({name})
-
-        const recipes = await getAllRecipes();
-        res.json(recipes);
-
-    } catch (error) {
-        res.status(400).json({
-            msg: error
-        })
+    } catch(error) {
+        console.log(error);
     }
 }
 
+// TODO vamos a recibir un id de tipo "1-DB || 1-API" y en base al segundo argumento
+// vamos a evaluar a donde ir a hacer la petición.
 const getRecipesById = (req, res) => {
+    try {
 
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 const getTypes = (req, res) => {

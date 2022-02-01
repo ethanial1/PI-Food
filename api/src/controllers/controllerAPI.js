@@ -4,7 +4,6 @@ const { API_KEY } = process.env;
 const getAllRecipesAPI = async () => {
     try {
         let recipes = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=10`);
-        console.log(recipes.data.results[0])
         recipes = recipes.data.results.map(res => (
             {
                 id: res.id,
@@ -20,15 +19,27 @@ const getAllRecipesAPI = async () => {
     }
 }
 
-const getRecipesByName = async (name) => {
+const getRecipesByNameAPI = async (name) => {
     try {
-        let recetas = await axios.get("")
+        let recetas = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&titleMatch=${name}&number=10`);
+        recetas = recetas.data.results.map(res => (
+            {
+                id: res.id,
+                name: res.title,
+                img: res.image,
+                diets: res.diets
+            }
+        ));
+
+        return recetas;
+
     } catch (error) {
-        
+        console.log(error);
     }
 }
 
 
 module.exports = {
-    getAllRecipesAPI
+    getAllRecipesAPI,
+    getRecipesByNameAPI
 }
