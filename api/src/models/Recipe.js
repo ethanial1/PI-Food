@@ -4,9 +4,21 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      get() {
+        return this.getDataValue('id') +"-DB"
+      }
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     sumary: {
       type: DataTypes.TEXT,

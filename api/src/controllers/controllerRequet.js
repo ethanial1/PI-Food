@@ -1,5 +1,5 @@
-const { getAllRecipiesDB, getRecipesByNameDB } = require('./controllerBD');
-const { getAllRecipesAPI, getRecipesByNameAPI } = require('./controllerAPI');
+const { getAllRecipiesDB, getRecipesByNameDB, getInfoRecetaByIdDB } = require('./controllerBD');
+const { getAllRecipesAPI, getRecipesByNameAPI, getRecipeInfoByIdAPI } = require('./controllerAPI');
 
 const getAllRecipes = async () => {
     const recipesDB = await getAllRecipiesDB();
@@ -17,9 +17,28 @@ const getAllRecipesByName = async (name) => {
     return res;
 }
 
+const getInfoRecetaByid = async (id, type) => {
+    try {
+        let recetas;
+        if(type === 'DB') {
+            recetas = await getInfoRecetaByIdDB(id);
+            return recetas;
+        }
+    
+        if (type === 'API') {
+            recetas = await getRecipeInfoByIdAPI(id);
+            return recetas;
+        }
+        
+    } catch (error) {
+        return new Error(error);
+    }
+}
+
 
 
 module.exports = {
     getAllRecipes,
-    getAllRecipesByName
+    getAllRecipesByName,
+    getInfoRecetaByid
 }
