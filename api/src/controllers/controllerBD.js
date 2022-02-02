@@ -48,21 +48,47 @@ const getInfoRecetaByIdDB = async (idReceta) => {
     }
 }
 
-// TODO precargar la lista de dietas disponible que se listan 
-// aquí: https://spoonacular.com/food-api/docs#Diets
 const addTypeOfDiets = async () => {
+    const TypesOfDiets = [
+        {nombre: "Gluten Free"},
+        {nombre: "Ketogenic"},
+        {nombre: "Vegetarian"},
+        {nombre: "Lacto-Vegetarian"},
+        {nombre: "Ovo-Vegetarian"},
+        {nombre: "Vegan"},
+        {nombre: "Pescetarian"},
+        {nombre: "Paleo"},
+        {nombre: "Primal"},
+        {nombre: "Low FODMAP"},
+        {nombre: "Whole30"}
+    ]
 
+    try {
+        const listaDietas = await Diet.bulkCreate(TypesOfDiets, { returning: true});
+        return listaDietas;
+    } catch (error) {
+        console.log(error)
+    }
 }
 
-// TODO función para obtener los tipos de dietas existentes, si no 
-// hay ninguna, carga la lista de dietas en base a la función de arriba.
-const getTypeOfDiets = async () => {
+const getTypeOfDietsDB = async () => {
+    try {
+        let dietasList = await Diet.findAll();
 
+        if(dietasList.length === 0) {
+            dietasList = await addTypeOfDiets();
+        }
+        return dietasList;
+
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 
 module.exports = {
     getAllRecipiesDB,
     getRecipesByNameDB,
-    getInfoRecetaByIdDB
+    getInfoRecetaByIdDB,
+    getTypeOfDietsDB
 }

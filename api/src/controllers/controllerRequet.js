@@ -34,13 +34,6 @@ const getInfoRecetaByid = async (id, type) => {
     }
 }
 
-// TODO obtener la lista de dietas disponibles en la base de datos
-const getTypes = async () => {
-
-}
-
-
-
 module.exports = {
     getAllRecipes,
     getAllRecipesByName,

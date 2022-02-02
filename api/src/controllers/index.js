@@ -1,4 +1,5 @@
 const { getAllRecipes, getAllRecipesByName, getInfoRecetaByid } = require('./controllerRequet');
+const { getTypeOfDietsDB } = require('./controllerBD');
 
 const getRecipes = async (req, res) => {
     try {
@@ -36,9 +37,13 @@ const getRecipesById = async (req, res) => {
     }
 }
 
-// TODO constultar los tipos de dietas que existen 
-const getTypes = (req, res) => {
-
+const getTypes = async (req, res) => {
+    try {
+        const lista = await getTypeOfDietsDB();
+        res.json(lista);
+    } catch (error) {
+        res.status(400).json({msg: error})
+    }
 }
 
 const saveNewRecipe = (req, res) => {
