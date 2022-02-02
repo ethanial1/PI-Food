@@ -85,10 +85,23 @@ const getTypeOfDietsDB = async () => {
     }
 }
 
+const addNewRecipe = async (...body) => {
+    const receta = body[0];
+
+    try {
+        const createRecipe = await Recipe.create({...receta}, {include: Diet});
+        return createRecipe;
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 module.exports = {
     getAllRecipiesDB,
     getRecipesByNameDB,
     getInfoRecetaByIdDB,
-    getTypeOfDietsDB
+    getTypeOfDietsDB,
+    addNewRecipe
 }

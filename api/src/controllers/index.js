@@ -1,5 +1,5 @@
 const { getAllRecipes, getAllRecipesByName, getInfoRecetaByid } = require('./controllerRequet');
-const { getTypeOfDietsDB } = require('./controllerBD');
+const { getTypeOfDietsDB, addNewRecipe } = require('./controllerBD');
 
 const getRecipes = async (req, res) => {
     try {
@@ -46,8 +46,18 @@ const getTypes = async (req, res) => {
     }
 }
 
-const saveNewRecipe = (req, res) => {
+const saveNewRecipe = async (req, res) => {
+    try {
+        const { name, sumary, score, healthScore, instructions, img, diets } = req.body;
+        
+        if(!name || !sumary || !score || !healthScore || !instructions || !img || !diets) throw new Error("")
+        
+        const createdRecipe =  await addNewRecipe(req.body);
+        res.json({msg: "hola"})
 
+    } catch (error) {
+        res.status(400).json({msg: "adios"})
+    }
 }
 
 
