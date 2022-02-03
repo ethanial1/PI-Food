@@ -75,9 +75,9 @@ const getImgRecipe = (req, res) => {
 
 
 module.exports = {
+    getImgRecipe,
     getRecipes,
     getRecipesById,
     getTypes,
     saveNewRecipe,
-    getImgRecipe
 }
