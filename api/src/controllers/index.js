@@ -53,12 +53,14 @@ const saveNewRecipe = async (req, res) => {
         if(!name || !sumary || !score || !healthScore || !instructions || !img || !diets) throw new Error("")
         
         const createdRecipe =  await addNewRecipe(req.body);
-        res.json({msg: "hola"})
+        res.json(createdRecipe);
 
     } catch (error) {
         res.status(400).json({msg: "adios"})
     }
 }
+
+
 
 
 

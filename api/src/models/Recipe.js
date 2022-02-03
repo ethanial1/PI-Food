@@ -8,9 +8,6 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      get() {
-        return this.getDataValue('id') +"-DB"
-      }
     },
     name: {
       type: DataTypes.STRING,

@@ -85,11 +85,13 @@ const getTypeOfDietsDB = async () => {
     }
 }
 
-const addNewRecipe = async (...body) => {
-    const receta = body[0];
+const addNewRecipe = async (body) => {
+    const { diets: dietas, ...rest } = body;
 
     try {
-        const createRecipe = await Recipe.create({...receta}, {include: Diet});
+        const createRecipe = await Recipe.create({...rest});
+        await createRecipe.addDiet(dietas);
+
         return createRecipe;
 
     } catch (error) {
