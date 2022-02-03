@@ -15,7 +15,10 @@ module.exports = (sequelize) => {
     },
     img: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      get() {
+        return `http://localhost:3001/assets/${this.getDataValue('img')}`;
+      }
     },
     sumary: {
       type: DataTypes.TEXT,
@@ -32,6 +35,10 @@ module.exports = (sequelize) => {
     instructions: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    isDB: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   });
 };

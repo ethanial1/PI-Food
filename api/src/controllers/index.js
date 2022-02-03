@@ -1,6 +1,7 @@
 const { getAllRecipes, getAllRecipesByName, getInfoRecetaByid } = require('./controllerRequet');
 const { getTypeOfDietsDB, addNewRecipe } = require('./controllerBD');
 
+// Funciones de las rutas
 const getRecipes = async (req, res) => {
     try {
         const name = req.query.name;
@@ -15,7 +16,8 @@ const getRecipes = async (req, res) => {
         res.json(todasRecetas);
         
     } catch(error) {
-        console.log(error);
+        console.log(error)
+        res.status(400).json({msg: error})
     }
 }
 
@@ -48,11 +50,14 @@ const getTypes = async (req, res) => {
 
 const saveNewRecipe = async (req, res) => {
     try {
-        const { name, sumary, score, healthScore, instructions, img, diets } = req.body;
+        const { name, sumary, score, healthScore, instructions, diets } = req.body;
+        const img = req.file.filename;
+        if(!name || !sumary || !score || !healthScore || !instructions || !img || !diets) {
+            // TODO Eliminar la imagen que se guardo y lanzar el error
+            throw new Error("");
+        }
         
-        if(!name || !sumary || !score || !healthScore || !instructions || !img || !diets) throw new Error("")
-        
-        const createdRecipe =  await addNewRecipe(req.body);
+        const createdRecipe =  await addNewRecipe(req.body, img);
         res.json(createdRecipe);
 
     } catch (error) {
@@ -60,6 +65,10 @@ const saveNewRecipe = async (req, res) => {
     }
 }
 
+const getImgRecipe = (req, res) => {
+    const img = req.params.idimg;
+    res.sendFile(img, {root: 'src/assets/'})
+}
 
 
 
@@ -69,5 +78,6 @@ module.exports = {
     getRecipes,
     getRecipesById,
     getTypes,
-    saveNewRecipe
+    saveNewRecipe,
+    getImgRecipe
 }

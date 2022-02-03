@@ -85,12 +85,13 @@ const getTypeOfDietsDB = async () => {
     }
 }
 
-const addNewRecipe = async (body) => {
+const addNewRecipe = async (body, img) => {
     const { diets: dietas, ...rest } = body;
 
     try {
-        const createRecipe = await Recipe.create({...rest});
-        await createRecipe.addDiet(dietas);
+        const createRecipe = await Recipe.create({...rest, img});
+        // TODO editar la forma en que añadimos los tipos de dieta, debemos de recibir un array
+        await createRecipe.addDiet([dietas]);
 
         return createRecipe;
 
