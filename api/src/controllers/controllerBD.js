@@ -2,12 +2,26 @@ const { Recipe, Diet, Op } = require('../db');
 
 const getAllRecipiesDB = async () => {
     try {
-        const recipes = await Recipe.findAll(
+        const recipesData = await Recipe.findAll(
             {
                 attributes: ['id','name','img'],
-                include: Diet
+                include: {
+                    model: Diet,
+                    attributes: ['nombre'],
+                    through:{
+                        attributes: []
+                    }
+                }
             }
         );
+        
+        const recipes = recipesData.map(receta => ({
+            id: receta.id,
+            name: receta.name,
+            img: receta.img,
+            diets: receta.diets.map(dieta => dieta.nombre)
+        }))
+
         return recipes;
 
     } catch (error) {
@@ -91,7 +105,7 @@ const addNewRecipe = async (body, img) => {
     try {
         const createRecipe = await Recipe.create({...rest, img});
         // TODO editar la forma en que añadimos los tipos de dieta, debemos de recibir un array
-        await createRecipe.addDiet([dietas]);
+        await createRecipe.addDiet([1,2,3,4]);
 
         return createRecipe;
 
