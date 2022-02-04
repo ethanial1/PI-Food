@@ -38,7 +38,13 @@ const getRecipesByNameDB = async (name) => {
                     [Op.iLike]: `%${name}%`
                 }
             },
-            include: Diet
+            include: {
+                model: Diet,
+                attributes: ['nombre'],
+                through:{
+                    attributes: []
+                }
+            }
         });
 
         return recetas;
@@ -53,7 +59,13 @@ const getInfoRecetaByIdDB = async (idReceta) => {
             idReceta,
             {
                 attributes: ['id','name','img'],
-                include: Diet
+                include: {
+                    model: Diet,
+                    attributes: ['nombre'],
+                    through:{
+                        attributes: []
+                    }
+                }
             }
         );
         return receta;
