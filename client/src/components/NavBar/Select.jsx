@@ -1,22 +1,15 @@
 import React from 'react';
 import st from './Select.module.css';
 
-const Select = () => {
+const Select = ({titulo, arrayItems, cb}) => {
     return (
         <div className={st.select}>
             <details>
-                <summary>Test Dropdown</summary>
+                <summary>{titulo}</summary>
                 <ul>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
+                   {
+                       arrayItems.map((ele, index) => (<li key={index}>{ele}</li>))
+                   }
                 </ul>
             </details>
         </div>

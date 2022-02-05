@@ -1,10 +1,12 @@
 .navbar {
     width: 100%;
+    height: 100px;
     background-color: #f1f4ff;
 }
 
 .container {
     max-width: 1200px;
+    height: 100%;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -19,12 +21,36 @@
     display: flex;
 }
 
-.filtros ul {
+
+
+.search {
+  max-width: 500px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 0 10px;
+  border: 1px solid black;
+}
+.search input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+}
+
+.search input:focus {
+    outline: none;
+}
+::placeholder {
+  color: black;
+}
+.search button {
+  border: 0;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.filtros {
     display: flex;
 }
-
-.filtros ul li {
-    margin-left: 1rem;
-}
-
-
