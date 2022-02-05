@@ -1,0 +1,30 @@
+.navbar {
+    width: 100%;
+    background-color: #f1f4ff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container ul {
+    list-style: none;
+}
+
+.container div:nth-child(2) {
+    display: flex;
+}
+
+.filtros ul {
+    display: flex;
+}
+
+.filtros ul li {
+    margin-left: 1rem;
+}
+
+

@@ -1,18 +1,24 @@
 import React from 'react';
+import st from './NavBar.module.css';
+import Select from './Select';
 
 const NavBar = () => {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <select name="tiposReceta">
-                        <optgroup label='Tipos de Dieta'>
-                            <option value="0">All</option>
-                            <option value="1">Gluten Free</option>
-                        </optgroup>
-                    </select>
-                </li>
-            </ul>
+        <nav className={st.navbar}>
+           <div className={st.container}>
+                <div>
+                    <h1>Chef Casero</h1>
+                </div>
+                <div>
+                    <div className={st.search}>
+                        <button>buscar</button>
+                        <input type="text" name="search" id="search" />
+                    </div>
+                    <div className={st.filtros}>
+                        <Select />
+                    </div>
+                </div>
+           </div>
         </nav>
     )
 };
