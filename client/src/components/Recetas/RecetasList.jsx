@@ -9,9 +9,6 @@ const RecetasList = () => {
             <RecetaCard />
             <RecetaCard />
             <RecetaCard />
-            <RecetaCard />
-            <RecetaCard />
-            <RecetaCard />
         </section>
     )
 };
