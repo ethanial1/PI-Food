@@ -1,12 +1,11 @@
 import React from 'react';
-import NavBar from '../../components/NavBar/NavBar';
 import RecetasList from '../../components/Recetas/RecetasList';
+import SideBar from '../../components/SideBar/SideBar';
 
 const Home = () => {
   return (
     <>
-      <NavBar />
-      <RecetasList />
+    <SideBar />
     </>
   )
 };

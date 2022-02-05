@@ -8,6 +8,8 @@ body {
   font-family: 'Moul', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #141921;
+  color: white;
 }
 
 code {
@@ -15,3 +17,9 @@ code {
     monospace;
 }
 
+button {
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+  background-color: transparent;
+}
