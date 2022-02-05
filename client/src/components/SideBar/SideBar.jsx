@@ -15,27 +15,33 @@ const SideBar = () => {
                     <button><i className='bx bxs-search-alt-2'></i></button>
                 </div>
             </div>
+            <div>
+                <ul>
+                    <li>Home</li>
+                </ul>
+            </div>
             <div className={st.filtros}>
-                <details className="collapse">
-                    <summary className="title">Orden Alfabetico</summary>
-                    <hr className="divider" />
+                <details className={st.collapse}>
+                    <summary className={st.title}>Orden Alfabetico</summary>
+                    <hr className={st.divider} />
                     <ul>
                         <li>A - Z</li>
                         <li>Z - A</li>
                     </ul>
                 </details>
-                <details className="collapse">
-                    <summary className="title">Tipo de Dieta</summary>
-                    <hr className="divider" />
+                <details className={st.collapse}>
+                    <summary className={st.title}>Tipo de Dieta</summary>
+                    <hr className={st.divider} />
                     <ul>
                         <li>Vegetariana</li>
                     </ul>
                 </details>
-                <details className="collapse">
-                    <summary className="title">Puntos</summary>
-                    <hr className="divider" />
+                <details className={st.collapse}>
+                    <summary className={st.title}>Puntos</summary>
+                    <hr className={st.divider} />
                     <ul>
-                        <li></li>
+                        <li>Lowest to highest score</li>
+                        <li>Highest to lowest score</li>
                     </ul>
                 </details>
             </div>
