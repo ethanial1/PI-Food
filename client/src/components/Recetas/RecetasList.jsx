@@ -15,6 +15,7 @@ const RecetasList = () => {
     
     if(!allRecipes.length) return null;
 
+    // TODO: realizar el paginado de recetas
     return (
         <section className={st.wrapper}>
             {

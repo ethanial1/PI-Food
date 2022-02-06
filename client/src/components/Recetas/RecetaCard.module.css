@@ -1,6 +1,7 @@
 .card {
     width: 260px;
     height: 390px;
+    cursor: pointer;
     border-radius: 20px;
     background: white;
     box-shadow: -4px 19px 38px -6px rgba(0,0,0,0.9);

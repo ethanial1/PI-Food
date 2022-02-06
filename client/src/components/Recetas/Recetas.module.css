@@ -1,8 +1,9 @@
 .wrapper {
-    width: 100%;
+    max-width: 1200px;
+    margin: auto;
     height: calc(100vh - 50px);
     display: grid;
-    grid-template-columns: repeat(auto-fill, 270px);
+    grid-template-columns: repeat(auto-fill, 250px);
     gap: 40px;
     padding: 20px;
     padding-top: 1.5rem;

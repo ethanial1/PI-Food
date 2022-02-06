@@ -3,7 +3,7 @@ import st from './RecetaCard.module.css';
 
 const RecetaCard = ({titulo, tipos, img}) => {
     return (
-        <div className={st.card}>
+        <div className={st.card} onClick={() => console.log(titulo)}>
             <img src={img} alt={titulo} />
             <div className={st.info}>
                 <div className={st.titulo}>

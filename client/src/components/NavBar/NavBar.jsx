@@ -23,6 +23,7 @@ const NavBar = () => {
         dispatch(getRecipesByName(nameRecipe));
     }
 
+    // TODO hacer funcionar los 3 filtro implemetados 
     return (
         <nav className={st.navbar}>
            <div className={st.container}>
