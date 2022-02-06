@@ -8,7 +8,7 @@ const Select = ({titulo, arrayItems, cb}) => {
                 <summary>{titulo}</summary>
                 <ul>
                    {
-                       arrayItems.map((ele, index) => (<li key={index}>{ele}</li>))
+                       arrayItems.map(ele => (<li key={ele.id}>{ele.nombre}</li>))
                    }
                 </ul>
             </details>

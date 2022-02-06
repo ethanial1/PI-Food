@@ -11,12 +11,10 @@ const RecetasList = () => {
 
     useEffect(() => {
         dispatch(getAllRecipes());
-        console.log("hola")
     }, [dispatch])
     
     if(!allRecipes.length) return null;
 
-    console.log(allRecipes)
     return (
         <section className={st.wrapper}>
             {
