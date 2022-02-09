@@ -35,6 +35,7 @@ const getRecipesById = async (req, res) => {
         res.json(respuesta);
 
     } catch (error) {
+        console.log(error)
         res.status(400).json({msg: error})
     }
 }
@@ -50,9 +51,9 @@ const getTypes = async (req, res) => {
 
 const saveNewRecipe = async (req, res) => {
     try {
-        const { name, sumary, score, healthScore, instructions, diets } = req.body;
+        const { name, summary, score, healthScore, instructions, diets } = req.body;
         const img = req.file.filename;
-        if(!name || !sumary || !score || !healthScore || !instructions || !img || !diets) {
+        if(!name || !summary || !score || !healthScore || !instructions || !img || !diets) {
             // TODO Eliminar la imagen que se guardo y lanzar el error
             throw new Error("");
         }
@@ -61,6 +62,7 @@ const saveNewRecipe = async (req, res) => {
         res.json(createdRecipe);
 
     } catch (error) {
+        console.log('save new recipe',error)
         res.status(400).json({msg: "adios"})
     }
 }

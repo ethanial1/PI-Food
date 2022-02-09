@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
         return `http://localhost:3001/assets/${this.getDataValue('img')}`;
       }
     },
-    sumary: {
+    summary: {
       type: DataTypes.TEXT,
       allowNull: false
     },

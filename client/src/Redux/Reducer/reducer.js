@@ -1,8 +1,8 @@
-import { GET_ALL_RECIPES, GET_RECIPES_BY_NAME, ORDER_BY_NAME } from '../Actions/actions';
+import { GET_ALL_RECIPES, GET_DETAILS_RECIPE, GET_RECIPES_BY_NAME, ORDER_BY_NAME } from '../Actions/actions';
 
 const initialState = {
     allRecipes: [],
-    ordenando: false
+    recipeDetails: {}
 }
 
 const rootReducer = (state = initialState, actions ) => {
@@ -16,6 +16,11 @@ const rootReducer = (state = initialState, actions ) => {
             return {
                 ...state,
                 allRecipes: actions.payload
+            }
+        case GET_DETAILS_RECIPE:
+            return {
+                ...state,
+                recipeDetails: actions.payload
             }
         case ORDER_BY_NAME:
             if (actions.payload === "ASC") state.allRecipes.sort((a,b) => a.name.localeCompare(b.name))

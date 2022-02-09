@@ -1,0 +1,48 @@
+.details {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.head {
+    text-align: center;
+}
+
+.head img {
+    width: 80%;
+    height: 450px;
+    box-shadow: 0 2px 15px rgb(0 0 0 / 50%);
+}
+
+.head h2 {
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: #5c809c;
+    font-stretch: semi-expanded;
+    letter-spacing: 0.3rem;
+    margin-top: 1.5rem;
+}
+
+.attributes {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.attributes h4 {
+    margin-right: 2rem;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: justify;
+}
+
+.info h3 {
+    margin-bottom: 1rem;
+}
+
+.info div {
+    padding: 20px;
+}

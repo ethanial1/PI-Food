@@ -30,6 +30,7 @@ const AllRecipes = () => {
                         currentRecipes.map(recipe => (
                             <RecetaCard 
                             key={recipe.id}
+                            id={recipe.id}
                             titulo={recipe.name}
                             tipos={recipe.diets}
                             img={recipe.img}/>

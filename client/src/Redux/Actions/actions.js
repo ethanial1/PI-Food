@@ -1,6 +1,7 @@
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
 export const ORDER_BY_NAME = "ORDER_BY_NAME_";
+export const GET_DETAILS_RECIPE = "GET_DETAILS_RECIPE"
 
 export const getAllRecipes = () => dispatch => {
     return (
@@ -36,3 +37,16 @@ export const orderByName = orden => {
 }
 
 // TODO crear una función para hacer la petición de los detalles de una receta y creación de una recta
+export const getDetailsRecipe = id => dispatch => {
+    let [ idu, type ] = id.split('-')
+    if(!type) type = 'DB' 
+    console.log(idu, type)
+    return (
+        fetch(`http://localhost:3001/recipes/${idu}-${type}`)
+        .then(res => res.json())
+        .then(json => dispatch({
+            type: GET_DETAILS_RECIPE,
+            payload: json
+        }))
+    )
+}

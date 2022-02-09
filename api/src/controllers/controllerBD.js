@@ -58,7 +58,9 @@ const getInfoRecetaByIdDB = async (idReceta) => {
         const receta = await Recipe.findByPk(
             idReceta,
             {
-                attributes: ['id','name','img'],
+                attributes: {
+                    exclude: ['updatedAt', 'createdAt','isDB']
+                },
                 include: {
                     model: Diet,
                     attributes: ['nombre'],
@@ -68,9 +70,20 @@ const getInfoRecetaByIdDB = async (idReceta) => {
                 }
             }
         );
-        return receta;
+
+        const auxReceta = {
+            id: receta.id,
+            name: receta.name,
+            img: receta.img,
+            summary: receta.summary,
+            score: receta.score,
+            healthScore: receta.healthScore,
+            instructions: receta.instructions,
+            diets: receta.diets.map(dieta => dieta.nombre)
+        }
+        return auxReceta;
     } catch (error) {
-        console.log(error);
+        console.log('error ------- ',error);
     }
 }
 

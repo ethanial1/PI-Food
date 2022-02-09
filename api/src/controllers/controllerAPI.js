@@ -46,6 +46,10 @@ const getRecipeInfoByIdAPI = async (id) => {
             id: data.id,
             name: data.title,
             img: data.image,
+            summary: data.summary,
+            score: data.spoonacularScore,
+            healthScore: data.healthScore,
+            instructions: data.instructions,
             diets: data.diets
         };
     } catch (error) {
