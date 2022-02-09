@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { orderByName } from '../../Redux/Actions/actions';
+import { getRecipesByName, orderByName } from '../../Redux/Actions/actions';
 import img from '../../assets/logoBlack.png';
 
 import st from './NavBar.module.css'
@@ -26,7 +26,7 @@ const NavBar = () => {
         }
 
         if(Object.keys(errores).length === 0) {
-            dispatch()
+            dispatch(getRecipesByName(nombre))
         }
     }
 

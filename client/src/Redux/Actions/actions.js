@@ -29,7 +29,6 @@ export const getRecipesByName = name => dispatch => {
 
 
 export const orderByName = orden => {
-    console.log("hola")
     return {
         type: ORDER_BY_NAME,
         payload: orden
