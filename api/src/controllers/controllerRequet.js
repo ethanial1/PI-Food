@@ -3,10 +3,11 @@ const { getAllRecipesAPI, getRecipesByNameAPI, getRecipeInfoByIdAPI } = require(
 
 const getAllRecipes = async () => {
     const recipesDB = await getAllRecipiesDB();
-    const recipesAPI = await getAllRecipesAPI();
-    const recetas = [...recipesDB, ...recipesAPI];
+    //const recipesAPI = await getAllRecipesAPI();
+    //const recetas = [...recipesDB, ...recipesAPI];
 
-    return recetas;
+    //return recetas;
+    return recipesDB
 }
 
 const getAllRecipesByName = async (name) => {

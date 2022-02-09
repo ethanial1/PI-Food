@@ -1,3 +1,4 @@
+/* ======= NAVBAR ========*/
 .nav {
     padding: 20px;
     display: flex;
@@ -5,7 +6,26 @@
     flex-direction: column;
 }
 
-.actions > div:nth-child(1) {
+.nav > button img {
+    width: 200px;
+}
+
+.nav > ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.nav > ul li {
+    margin-right: 1rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+/* ====== SEARCHBAR ======= */
+.search {
     margin: 2rem 0;
     border: 1px solid black;
     border-radius: 20px;
@@ -14,15 +34,17 @@
     text-align: center;
 }
 
-.actions div:nth-child(1) form input[type=text] {
+.search form input[type=text] {
     background: transparent;
     border: none;
     width: 80%;
 }
 
-.actions div:nth-child(1) form input[type=text]:focus {
+.search form input[type=text]:focus {
     outline: none;
 }
+
+/* ======= FILTROS ========*/
 
 .filtros {
     display: flex;
@@ -33,4 +55,11 @@
     border-radius: 20px;
     padding: 5px 10px;
     margin-right: 1.5rem;
+}
+
+/* ======== ACTIONS =========*/
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
