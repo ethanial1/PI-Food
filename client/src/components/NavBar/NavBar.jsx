@@ -2,6 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { orderByName } from '../../Redux/Actions/actions';
+import img from '../../assets/logoBlack.png';
+
+import st from './NavBar.module.css'
 
 const NavBar = () => {
     const [nombre, setNombre] = useState('');
@@ -28,9 +31,11 @@ const NavBar = () => {
     }
 
     return (
-        <nav>
-            <div>img</div>
+        <nav className={st.nav}>
             <div>
+                <img src={img} alt="chef casero" />
+            </div>
+            <div className={st.actions}>
                 <div>
                     <form onSubmit={e => handleSubmit(e)}>
                         <input type="text" name="name" id="name" placeholder='Buscar por nombre' value={nombre} onChange={e => setNombre(e.target.value)}/>
@@ -40,11 +45,10 @@ const NavBar = () => {
                         </button>
                     </form>
                 </div>
-                <div>
+                <div className={st.filtros}>
                     <div>
                         <span>{ordenBy}</span>
                         <select name="sort" id="sort" onChange={e => handleSort(e)}>
-                            <option disabled>Order</option>
                             <option value="ASC">A - Z</option>
                             <option value="DESC">Z - A</option>
                         </select>
@@ -52,11 +56,9 @@ const NavBar = () => {
                             <option value="">Lowest to highest score</option>
                             <option value="">Highest to lowest score</option>
                         </select>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>Dieta 1</li>
-                        </ul>
+                        <select name="diets" id="diets">
+                            <option value="dieta 1">Dieta 1</option>
+                        </select>
                     </div>
                 </div>
             </div>
