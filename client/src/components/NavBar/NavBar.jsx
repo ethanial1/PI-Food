@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRecipesByName, orderByName } from '../../Redux/Actions/actions';
+import { getAllRecipes, getRecipesByName, orderByName } from '../../Redux/Actions/actions';
 import img from '../../assets/logoBlack.png';
 
 import st from './NavBar.module.css'
@@ -30,11 +30,15 @@ const NavBar = () => {
         }
     }
 
+    const handleReset = () => {
+        dispatch(getAllRecipes())
+    }
+    // TODO ordenar por puntos y por tipo de dieta
     return (
         <nav className={st.nav}>
-            <div>
+            <button onClick={handleReset}>
                 <img src={img} alt="chef casero" />
-            </div>
+            </button>
             <div className={st.actions}>
                 <div>
                     <form onSubmit={e => handleSubmit(e)}>

@@ -34,3 +34,5 @@ export const orderByName = orden => {
         payload: orden
     }
 }
+
+// TODO crear una función para hacer la petición de los detalles de una receta y creación de una recta

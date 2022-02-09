@@ -20,6 +20,10 @@
     width: 80%;
 }
 
+.actions div:nth-child(1) form input[type=text]:focus {
+    outline: none;
+}
+
 .filtros {
     display: flex;
 }
