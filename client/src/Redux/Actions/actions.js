@@ -1,5 +1,6 @@
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
+export const ORDER_BY_NAME = "ORDER_BY_NAME_";
 
 export const getAllRecipes = () => dispatch => {
     return (
@@ -24,4 +25,13 @@ export const getRecipesByName = name => dispatch => {
             payload: json
         }))
     )
+}
+
+
+export const orderByName = orden => {
+    console.log("hola")
+    return {
+        type: ORDER_BY_NAME,
+        payload: orden
+    }
 }

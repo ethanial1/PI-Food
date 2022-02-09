@@ -1,49 +1,69 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRecipesByName } from '../../Redux/Actions/actions';
-import st from './NavBar.module.css';
-import Select from './Select';
+import { orderByName } from '../../Redux/Actions/actions';
 
 const NavBar = () => {
-    const [nameRecipe, setNameRecipe] = useState('');
-    const [types, setTypes] = useState([]);
-    const dispatch = useDispatch();
+    const [nombre, setNombre] = useState('');
+    const [errores, setErrores] = useState({});
+    const [ordenBy, setOrdenBy] = useState('');
+    const dispatch = useDispatch()
 
-    useEffect(() => {
-      fetch("http://localhost:3001/types")
-      .then(res => res.json())
-      .then(json => setTypes(json));
-
-    }, []);
-    
-
-    const handleClick = () => {
-        dispatch(getRecipesByName(nameRecipe));
+    const handleSort = e => {
+        dispatch(orderByName(e.target.value))
+        setOrdenBy(e.target.value)
     }
 
-    // TODO hacer funcionar los 3 filtro implemetados 
+    const handleSubmit = e => {
+        e.preventDefault()
+
+        if(!nombre.trim()) {
+            setErrores({nombre:"Nombre de receta requerido"})
+            return
+        }
+
+        if(Object.keys(errores).length === 0) {
+            dispatch()
+        }
+    }
+
     return (
-        <nav className={st.navbar}>
-           <div className={st.container}>
+        <nav>
+            <div>img</div>
+            <div>
                 <div>
-                    <h1>Chef Casero</h1>
+                    <form onSubmit={e => handleSubmit(e)}>
+                        <input type="text" name="name" id="name" placeholder='Buscar por nombre' value={nombre} onChange={e => setNombre(e.target.value)}/>
+                        {errores.nombre && <span>{errores.nombre}</span>}
+                        <button type="submit">
+                            <i className='bx bx-search-alt'></i>
+                        </button>
+                    </form>
                 </div>
                 <div>
-                    <div className={st.filtros}>
-                        <Select titulo="Orden Alfabetico" arrayItems={[{id: 1, nombre: "A - Z"},{id: 2, nombre: "Z - A"}]}/>
-                        <Select titulo="Puntuación" arrayItems={[{id: 1, nombre: "Points"},{id: 2, nombre:"Lowest to highest score"},{id:3, nombre:"Highest to lowest score"}]}/>
-                        <Select titulo="Tipo de Dieta" arrayItems={types}/>
+                    <div>
+                        <span>{ordenBy}</span>
+                        <select name="sort" id="sort" onChange={e => handleSort(e)}>
+                            <option disabled>Order</option>
+                            <option value="ASC">A - Z</option>
+                            <option value="DESC">Z - A</option>
+                        </select>
+                        <select name="points" id="points" onChange={e => handleSort(e)}>
+                            <option value="">Lowest to highest score</option>
+                            <option value="">Highest to lowest score</option>
+                        </select>
                     </div>
-                    <div className={st.search}>
-                        <input type="text" name="search" id="search" placeholder='Buscar por nombre' value={nameRecipe} onChange={(e) => setNameRecipe(e.target.value)}/>
-                        <button onClick={handleClick}>buscar</button>
+                    <div>
+                        <ul>
+                            <li>Dieta 1</li>
+                        </ul>
                     </div>
                 </div>
-           </div>
+            </div>
         </nav>
     )
 };
 
 export default NavBar;
+
+
