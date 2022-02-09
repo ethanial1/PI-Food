@@ -1,0 +1,15 @@
+
+.img_izq {
+    position: fixed;
+    z-index: -1;
+    height: -webkit-fill-available;
+}
+
+.img_der {
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    z-index: -1;
+    top: 0;
+    height: -webkit-fill-available;
+}
