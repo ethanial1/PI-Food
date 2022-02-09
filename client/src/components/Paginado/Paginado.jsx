@@ -1,4 +1,5 @@
 import React from 'react';
+import st from './Paginado.module.css'
 
 const Paginado = ({recipesPerPage, allRecipes, paginado}) => {
 
@@ -9,7 +10,7 @@ const Paginado = ({recipesPerPage, allRecipes, paginado}) => {
     }
 
     return (
-        <nav>
+        <nav className={st.paginas}>
             <ul>
                 {
                     pagNumbers && pagNumbers.map(number => (
