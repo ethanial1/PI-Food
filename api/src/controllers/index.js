@@ -54,7 +54,7 @@ const saveNewRecipe = async (req, res) => {
         const { img, name, summary, score, healthScore, instructions, diets } = req.body;
         //const img = req.file.filename;
         if(!name || !summary || !score || !healthScore || !instructions || !img || !diets) {
-            // TODO Eliminar la imagen que se guardo y lanzar el error
+            //Eliminar la imagen que se guardo y lanzar el error // ----> no aplica debido a que ahora recibimos una url y no el archivo.
             throw new Error("");
         }
         

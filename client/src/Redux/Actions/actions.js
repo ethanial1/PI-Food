@@ -36,7 +36,6 @@ export const orderByName = orden => {
     }
 }
 
-// TODO crear una función para hacer la petición de los detalles de una receta y creación de una recta
 export const getDetailsRecipe = id => dispatch => {
     let [ idu, type ] = id.split('-')
     if(!type) type = 'DB' 

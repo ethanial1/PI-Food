@@ -129,7 +129,6 @@ const addNewRecipe = async (body) => {
 
     try {
         const createRecipe = await Recipe.create({...rest});
-        // TODO editar la forma en que añadimos los tipos de dieta, debemos de recibir un array
         await createRecipe.addDiet(dietas);
 
         return createRecipe;
