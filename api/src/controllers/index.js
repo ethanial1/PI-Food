@@ -51,14 +51,14 @@ const getTypes = async (req, res) => {
 
 const saveNewRecipe = async (req, res) => {
     try {
-        const { name, summary, score, healthScore, instructions, diets } = req.body;
-        const img = req.file.filename;
+        const { img, name, summary, score, healthScore, instructions, diets } = req.body;
+        //const img = req.file.filename;
         if(!name || !summary || !score || !healthScore || !instructions || !img || !diets) {
             // TODO Eliminar la imagen que se guardo y lanzar el error
             throw new Error("");
         }
         
-        const createdRecipe =  await addNewRecipe(req.body, img);
+        const createdRecipe =  await addNewRecipe(req.body);
         res.json(createdRecipe);
 
     } catch (error) {

@@ -50,3 +50,18 @@ export const getDetailsRecipe = id => dispatch => {
         }))
     )
 }
+
+export const saveNewRecipe = form => dispatch => {
+    return (
+        fetch('http://localhost:3001/recipe', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(form)
+        })
+        .then(res => res.json())
+        .then(json => console.log(json))
+        .catch(error => console.log(error))
+    )
+}

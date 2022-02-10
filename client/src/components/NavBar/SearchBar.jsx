@@ -19,6 +19,7 @@ const SearchBar = () => {
 
         if(Object.keys(errores).length === 0) {
             dispatch(getRecipesByName(nombre))
+            setNombre('')
         }
     }
     return (

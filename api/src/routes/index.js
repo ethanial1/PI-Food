@@ -9,21 +9,22 @@ const router = Router();
 
 
 // Configuración de Multer
-const storage = multer.diskStorage({
-    destination: 'src/assets/',
-    filename: (req, file, cb) => {
-        cb("",Date.now()+file.originalname);
-    }
-})
+// const storage = multer.diskStorage({
+//     destination: 'src/assets/',
+//     filename: (req, file, cb) => {
+//         cb("",Date.now()+file.originalname);
+//     }
+// })
 
-const upload = multer({ storage }).single('img');
+// const upload = multer({ storage }).single('img');
 
 // Configurar los routers
 router.get('/recipes', getRecipes);
 
 router.get('/types', getTypes)
 
-router.post('/recipe', upload, saveNewRecipe)
+//router.post('/recipe', upload, saveNewRecipe)
+router.post('/recipe', saveNewRecipe)
 
 router.get('/recipes/:idReceta', getRecipesById)
 
