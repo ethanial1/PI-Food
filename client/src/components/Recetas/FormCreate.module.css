@@ -1,0 +1,48 @@
+.section {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.img {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.img > img {
+    width: 300px;
+}
+
+.form label {
+    display: block;
+}
+
+.group {
+    margin-bottom: 1.5rem;
+}
+
+.group label {
+    color: gray;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+.group input,
+.group textarea {
+    width: 300px;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.group input:focus,
+.group textarea:focus {
+    outline: none;
+}
+
+.group > label > span {
+    color: red;
+}
