@@ -1,4 +1,4 @@
-import { GET_ALL_RECIPES, GET_DETAILS_RECIPE, GET_RECIPES_BY_NAME, GET_TYPES_RECIPE, ORDER_BY_NAME, ORDER_BY_POINTS, SORT_RECIPES } from '../Actions/actions';
+import { GET_ALL_RECIPES, GET_DETAILS_RECIPE, GET_RECIPES_BY_NAME, GET_TYPES_RECIPE, SORT_RECIPES } from '../Actions/actions';
 
 const initialState = {
     allRecipes: [],
@@ -42,7 +42,6 @@ const rootReducer = (state = initialState, actions ) => {
                 return 0
             })
             else {
-                console.log(state.allRecipes[0].diets,state.allRecipes[0].diets.includes(actions.payload))
                 state.allRecipes = state.allRecipes.filter(recipe => recipe.diets.includes(actions.payload))
             }
             return {

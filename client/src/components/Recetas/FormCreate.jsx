@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import st from './FormCreate.module.css'
 import img from '../../assets/formImg.jpg'
 import { saveNewRecipe } from '../../Redux/Actions/actions';
@@ -20,6 +20,7 @@ const FormCreate = () => {
   const [errores, setErrores] = useState({})
 
   const dispatch = useDispatch()
+  const types = useSelector(state => state.types)
 
   const handleChange = e => {
     setForm({
@@ -71,7 +72,16 @@ const FormCreate = () => {
           </div>
           <div className={st.group}>
             <label htmlFor="dietas">Dietas <span>*</span></label>
-
+            <div className={st.check}>
+              {
+                types.map(type => (
+                  <label key={type.id} htmlFor="receta1">
+                    <input type="checkbox" name={type.nombre} id={type.nombre}/>
+                    {type.nombre}
+                  </label>
+                ))
+              }
+            </div>
           </div>
           <button type="submit">Guardar</button>
         </form>

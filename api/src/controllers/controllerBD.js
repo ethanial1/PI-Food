@@ -89,8 +89,9 @@ const getInfoRecetaByIdDB = async (idReceta) => {
 }
 
 const addTypeOfDiets = async () => {
+    // TODO 
     const TypesOfDiets = [
-        {nombre: "gluten Free"},
+        {nombre: "gluten free"},
         {nombre: "ketogenic"},
         {nombre: "vegetarian"},
         {nombre: "lacto vegetarian"},

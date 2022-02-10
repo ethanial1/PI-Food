@@ -27,10 +27,17 @@
     display: flex;
     justify-content: center;
     margin-top: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .attributes h4 {
     margin-right: 2rem;
+}
+
+.attributes h5 {
+    width: 100%;
+    font-size: 1.2rem;
+    margin-top: 1rem;
 }
 
 .info {

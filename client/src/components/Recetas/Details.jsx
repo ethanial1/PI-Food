@@ -14,7 +14,7 @@ const Details = () => {
         dispatch(getDetailsRecipe(id))
     }, [dispatch, id]);
     
-
+    console.log(recipeDetails)
     return (
         <section className={st.details}>
             <div className={st.head}>
@@ -26,6 +26,7 @@ const Details = () => {
                     <div className={st.attributes}>
                         <h4>score <span>{recipeDetails.score}</span></h4>
                         <h4>healthyscore <span>{recipeDetails.healthScore}</span></h4>
+                        <h5>{recipeDetails.diets?.join(', ')}</h5>
                     </div>
                 </div>
             </div>

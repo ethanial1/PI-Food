@@ -4,9 +4,6 @@ export const GET_DETAILS_RECIPE = "GET_DETAILS_RECIPE";
 export const GET_TYPES_RECIPE = "GET_TYPES_RECIPE";
 export const SORT_RECIPES = "SORT_RECIPES";
 
-export const ORDER_BY_NAME = "ORDER_BY_NAME_";
-export const ORDER_BY_POINTS = "ORDER_BY_POINTS";
-
 export const getAllRecipes = () => dispatch => {
     return (
         fetch("http://localhost:3001/recipes")
@@ -73,19 +70,6 @@ export const saveNewRecipe = form => dispatch => {
     )
 }
 
-export const orderByPoints = orden => {
-    return {
-        type: ORDER_BY_POINTS,
-        payload: orden
-    }
-}
-
-export const orderByName = orden => {
-    return {
-        type: ORDER_BY_NAME,
-        payload: orden
-    }
-}
 
 export const sortRecipesBy = orden => {
     return {
