@@ -14,6 +14,7 @@ const initialForm = {
   diets: [1],
 }
 
+// TODO cambia el estilo de la vista del formualrio
 const FormCreate = () => {
   const [form, setForm] = useState(initialForm)
   const [errores, setErrores] = useState({})
@@ -36,7 +37,7 @@ const FormCreate = () => {
     }
   }
 
-
+  // TODO falta mostrar en el formulario, los tipos de dietas existentes y en base a estos, añadirlos al array de diets
   return (
     <section className={st.section}>
       <div className={st.img}>

@@ -1,7 +1,11 @@
 export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
+export const GET_DETAILS_RECIPE = "GET_DETAILS_RECIPE";
+export const GET_TYPES_RECIPE = "GET_TYPES_RECIPE";
+export const SORT_RECIPES = "SORT_RECIPES";
+
 export const ORDER_BY_NAME = "ORDER_BY_NAME_";
-export const GET_DETAILS_RECIPE = "GET_DETAILS_RECIPE"
+export const ORDER_BY_POINTS = "ORDER_BY_POINTS";
 
 export const getAllRecipes = () => dispatch => {
     return (
@@ -29,13 +33,6 @@ export const getRecipesByName = name => dispatch => {
 }
 
 
-export const orderByName = orden => {
-    return {
-        type: ORDER_BY_NAME,
-        payload: orden
-    }
-}
-
 export const getDetailsRecipe = id => dispatch => {
     let [ idu, type ] = id.split('-')
     if(!type) type = 'DB' 
@@ -45,6 +42,17 @@ export const getDetailsRecipe = id => dispatch => {
         .then(res => res.json())
         .then(json => dispatch({
             type: GET_DETAILS_RECIPE,
+            payload: json
+        }))
+    )
+}
+
+export const getTypesRecipe = () => dispatch => {
+    return (
+        fetch('http://localhost:3001/types')
+        .then(res => res.json())
+        .then(json => dispatch({
+            type: GET_TYPES_RECIPE,
             payload: json
         }))
     )
@@ -63,4 +71,25 @@ export const saveNewRecipe = form => dispatch => {
         .then(json => console.log(json))
         .catch(error => console.log(error))
     )
+}
+
+export const orderByPoints = orden => {
+    return {
+        type: ORDER_BY_POINTS,
+        payload: orden
+    }
+}
+
+export const orderByName = orden => {
+    return {
+        type: ORDER_BY_NAME,
+        payload: orden
+    }
+}
+
+export const sortRecipesBy = orden => {
+    return {
+        type: SORT_RECIPES,
+        payload: orden
+    }
 }

@@ -9,7 +9,8 @@ const getAllRecipesAPI = async () => {
                 id: `${res.id}-API`,
                 name: res.title,
                 img: res.image,
-                diets: res.diets
+                score: res.spoonacularScore,
+                diets: res.diets,
             }
         ));
 
@@ -27,6 +28,7 @@ const getRecipesByNameAPI = async (name) => {
                 id: `${res.id}-API`,
                 name: res.title,
                 img: res.image,
+                score: res.spoonacularScore,
                 diets: res.diets
             }
         ));

@@ -4,7 +4,7 @@ const getAllRecipiesDB = async () => {
     try {
         const recipesData = await Recipe.findAll(
             {
-                attributes: ['id','name','img'],
+                attributes: ['id','name','img','score'],
                 include: {
                     model: Diet,
                     attributes: ['nombre'],
@@ -19,6 +19,7 @@ const getAllRecipiesDB = async () => {
             id: receta.id,
             name: receta.name,
             img: receta.img,
+            score: receta.score,
             diets: receta.diets.map(dieta => dieta.nombre)
         }))
 
@@ -89,17 +90,17 @@ const getInfoRecetaByIdDB = async (idReceta) => {
 
 const addTypeOfDiets = async () => {
     const TypesOfDiets = [
-        {nombre: "Gluten Free"},
-        {nombre: "Ketogenic"},
-        {nombre: "Vegetarian"},
-        {nombre: "Lacto-Vegetarian"},
-        {nombre: "Ovo-Vegetarian"},
-        {nombre: "Vegan"},
-        {nombre: "Pescetarian"},
-        {nombre: "Paleo"},
-        {nombre: "Primal"},
-        {nombre: "Low FODMAP"},
-        {nombre: "Whole30"}
+        {nombre: "gluten Free"},
+        {nombre: "ketogenic"},
+        {nombre: "vegetarian"},
+        {nombre: "lacto vegetarian"},
+        {nombre: "lacto ovo vegetarian"},
+        {nombre: "vegan"},
+        {nombre: "pescetarian"},
+        {nombre: "paleo"},
+        {nombre: "primal"},
+        {nombre: "low fODMAP"},
+        {nombre: "whole30"}
     ]
 
     try {
