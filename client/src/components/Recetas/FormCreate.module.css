@@ -24,6 +24,7 @@
 
 .group {
     margin-bottom: 1.5rem;
+    transition: all 0.3s;
 }
 
 .group label {
@@ -45,6 +46,12 @@
 }
 
 .group > label > span {
+    color: red;
+}
+
+.group > span {
+    display: block;
+    font-size: .8rem;
     color: red;
 }
 

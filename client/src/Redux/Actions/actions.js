@@ -32,8 +32,7 @@ export const getRecipesByName = name => dispatch => {
 
 export const getDetailsRecipe = id => dispatch => {
     let [ idu, type ] = id.split('-')
-    if(!type) type = 'DB' 
-    console.log(idu, type)
+    if(!type) type = 'DB'
     return (
         fetch(`http://localhost:3001/recipes/${idu}-${type}`)
         .then(res => res.json())
