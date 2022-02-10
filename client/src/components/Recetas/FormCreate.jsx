@@ -11,7 +11,7 @@ const initialForm = {
   score: "",
   healthScore: "",
   instructions: "",
-  diets: [1],
+  diets: [],
 }
 
 const validate = form => {
@@ -34,6 +34,8 @@ const validate = form => {
   if(!form.healthScore) err.healthScore = 'Puntuación requerida'
 
   if(!form.instructions) err.instructions = '¿Podrías compartirnos los pasos de la receta?'
+
+  if(!form.diets.length) err.diets = 'Debes de seleccionar al menor 1 tipo de dieta'
 
   return err;
 }
@@ -60,6 +62,15 @@ const FormCreate = () => {
     }))
   }
 
+  const handleChecked = e => {
+    if(e.target.checked) {
+      form.diets.push(e.target.name)
+    } else {
+      const indice = form.diets.indexOf(e.target.name);
+      form.diets.splice(indice, 1);
+    }
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
     const aux = validate(form)
@@ -71,7 +82,6 @@ const FormCreate = () => {
     }
   }
 
-  // TODO falta mostrar en el formulario, los tipos de dietas existentes y en base a estos, añadirlos al array de diets
   return (
     <section className={st.section}>
       <div className={st.img}>
@@ -115,12 +125,13 @@ const FormCreate = () => {
               {
                 types.map(type => (
                   <label key={type.id} htmlFor="receta1">
-                    <input type="checkbox" name={type.nombre} id={type.nombre}/>
+                    <input type="checkbox" name={type.id} onChange={handleChecked}/>
                     {type.nombre}
                   </label>
                 ))
               }
             </div>
+            { error.diets && <span>{error.diets}</span> }
           </div>
           <button type="submit">Guardar</button>
         </form>

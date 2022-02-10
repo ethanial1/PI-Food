@@ -14,7 +14,6 @@ const Details = () => {
         dispatch(getDetailsRecipe(id))
     }, [dispatch, id]);
     
-    console.log(recipeDetails)
     return (
         <section className={st.details}>
             <div className={st.head}>

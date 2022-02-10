@@ -16,9 +16,6 @@ module.exports = (sequelize) => {
     img: {
       type: DataTypes.STRING,
       allowNull: false,
-      get() {
-        return `http://localhost:3001/assets/${this.getDataValue('img')}`;
-      }
     },
     summary: {
       type: DataTypes.TEXT,
