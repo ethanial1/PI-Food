@@ -35,7 +35,7 @@ const validate = form => {
 
   if(!form.instructions) err.instructions = '¿Podrías compartirnos los pasos de la receta?'
 
-  if(!form.diets.length) err.diets = 'Debes de seleccionar al menor 1 tipo de dieta'
+  if(!form.diets.length) err.diets = 'Debes de seleccionar al menos 1 tipo de dieta'
 
   return err;
 }

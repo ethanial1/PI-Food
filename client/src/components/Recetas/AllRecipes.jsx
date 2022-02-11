@@ -29,7 +29,7 @@ const AllRecipes = () => {
                     currentRecipes.length > 0 ?
                         currentRecipes.map(recipe => (
                             <RecetaCard 
-                            key={recipe.id}
+                            key={`${recipe.id}`}
                             id={recipe.id}
                             titulo={recipe.name}
                             tipos={recipe.diets}

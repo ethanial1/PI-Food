@@ -48,7 +48,16 @@ const getRecipesByNameDB = async (name) => {
             }
         });
 
-        return recetas;
+        const recipes = recetas.map(receta => ({
+            id: receta.id,
+            name: receta.name,
+            img: receta.img,
+            score: receta.score,
+            diets: receta.diets.map(dieta => dieta.nombre)
+        }))
+
+
+        return recipes;
     } catch (error) {
         console.log(error);
     }

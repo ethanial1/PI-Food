@@ -4,7 +4,7 @@ import st from './RecetaCard.module.css';
 
 const RecetaCard = ({id, titulo, tipos, img}) => {
     return (
-         <div className={st.card} onClick={() => console.log(titulo)}>
+         <div className={st.card}>
             <NavLink to={`/details/${id}`}>
                 <img src={img} alt={titulo} />
                 <div className={st.info}>
