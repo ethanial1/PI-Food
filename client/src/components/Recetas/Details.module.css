@@ -1,13 +1,32 @@
+.glass {
+    height: 100vh;
+    /* From https://css.glass */
+background: rgba(184, 184, 184, 0.76);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(18.9px);
+-webkit-backdrop-filter: blur(18.9px);
+}
+
 .details {
-    max-width: 900px;
+    max-width: 1400px;
     margin: auto;
-    padding: 20px;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .head {
     text-align: center;
 }
-
 .head img {
     width: 80%;
     height: 450px;
@@ -41,8 +60,6 @@
 }
 
 .info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     text-align: justify;
 }
 

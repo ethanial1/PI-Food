@@ -17,8 +17,10 @@ const Details = () => {
     
     return (
         <>
-            <Nav />
-            <section className={st.details}>
+        <img src={recipeDetails.img} alt="" className={st.back}/>
+        <section className={st.glass}>
+                <Nav />
+            <div className={st.details}>
                 <div className={st.head}>
                     <div>
                         <img src={recipeDetails.img} alt={recipeDetails.img} />
@@ -42,7 +44,8 @@ const Details = () => {
                         {parse(`${recipeDetails.instructions}`)}
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
         </>
     )
 };
