@@ -1,21 +1,42 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(249,249,249,1) 60%, rgba(255,255,255,1) 100%);
+}
 .section {
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
     margin-top: 1rem;
     margin-bottom: 2rem;
+    position: relative;
+    z-index: 10;
 }
 
 .img {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
 .img > img {
-    width: 300px;
+    width: 500px;
+}
+
+.form {
+    width: 50%;
+}
+
+.form h3 {
+    margin-bottom: .5rem;
+    padding-left: 1.5rem;
+}
+
+.form_items {
+    padding: 1.5rem;
+    background: white;
 }
 
 .form label {
@@ -35,10 +56,11 @@
 
 .group input,
 .group textarea {
-    width: 300px;
-    padding: 5px 0;
-    border: none;
-    border-bottom: 1px solid black;
+    width: 90%;
+    padding: 0.7rem;
+    border-radius: 5px;
+    border: 1px solid #8080806e;
+    font-family: auto;
 }
 .group input:focus,
 .group textarea:focus {
@@ -66,4 +88,13 @@
 .check > label  input {
     width: 10px;
     margin-right: .5rem;
+}
+
+.btn {
+    display: block;
+    padding: 10px 0;
+    width: 90%;
+    margin: auto;
+    border-radius: 20px;
+    background: #dfd699;
 }
