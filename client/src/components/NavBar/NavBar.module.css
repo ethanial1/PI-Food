@@ -32,6 +32,7 @@
     padding: 5px 10px;
     width: 400px;
     text-align: center;
+    position: relative;
 }
 
 .search form input[type=text] {
@@ -43,6 +44,16 @@
 .search form input[type=text]:focus {
     outline: none;
 }
+
+.search span {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    color: red;
+    font-size: .8rem;
+    margin-left: 1rem;
+}
+
 
 /* ======= FILTROS ========*/
 
