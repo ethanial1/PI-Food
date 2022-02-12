@@ -98,19 +98,18 @@ const getInfoRecetaByIdDB = async (idReceta) => {
 }
 
 const addTypeOfDiets = async () => {
-    // TODO escribir bien los tipos de dietas que existen
     const TypesOfDiets = [
-        {nombre: "gluten free"},
-        {nombre: "ketogenic"},
-        {nombre: "vegetarian"},
-        {nombre: "lacto vegetarian"},
-        {nombre: "lacto ovo vegetarian"},
-        {nombre: "vegan"},
-        {nombre: "pescetarian"},
-        {nombre: "paleo"},
-        {nombre: "primal"},
-        {nombre: "low fODMAP"},
-        {nombre: "whole30"}
+        {nombre: 'vegetarian'},
+        {nombre: 'lacto vegetarian'},
+        {nombre: 'ovo vegetarian'},
+        {nombre: 'vegan'},
+        {nombre: 'pescetarian'},
+        {nombre: 'paleolithic'},
+        {nombre: 'dairy free'},
+        {nombre: 'primal'},
+        {nombre: 'whole30'},
+        {nombre: 'gluten free'},
+        {nombre: 'lacto ovo vegetarian'}
     ]
 
     try {
