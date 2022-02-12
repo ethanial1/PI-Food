@@ -7,14 +7,14 @@ describe('Recipes', () => {
     describe('GET /recipes', () => {
         it('should responds with 200 status', () => agent.get('/recipes').expect(200));
 
-        it('should responds with an array with 100 elements', () => 
+        it('should responds with an array with 100 elements at the beginig', () => 
             agent.get('/recipes')
             .then(res => {
                 expect(res.body.length).toBe(100)
             })
         )
 
-        it('should responds with and array and in the first position should be and aobject like this: {}', () =>
+        it('should responds with and array and in the first position should be an aobject like this: {}', () =>
             agent.get('/recipes')
             .then(res => {
                 expect(res.body[0]).toEqual(
@@ -80,8 +80,33 @@ describe('Recipes', () => {
         )
     })
 
+    describe('GET /types', () => {
+        it('should responds with status 200', () => agent.get('/types').expect(200))
+
+        it('should responds with an array of # elements', () => 
+            agent.get('/types')
+            .then(res => {
+                expect(res.body.length).toBe(11)
+            })
+        )
+
+        it('should responds with an array and in the first position should be an object with the property nombre', () => {
+            agent.get('/types')
+            .then(res => {
+                expect(res.body[0]).toHaveProperty('nombre')
+            })
+        })
+
+        it('shoudl responds with and array and in the first position shoudl be an object with the property name with the value "gluten free"', () => 
+            agent.get('/types')
+            .then(res => {
+                expect(res.body[0].nombre).toMatch('gluten free')
+            })
+        )
+    });
+
     describe('POST /recipe', () => {
-        it('should responds with 200 status code when we send the correct object', () => {
+        it('should responds with 200 status code and the object created when we send the correct object', () => 
             agent.post('/recipe')
             .send({
                 img: "https://tse3.mm.bing.net/th?id=OIP.y-dXCFWoMM_DmNI5tfyiHgHaE8&pid=Api",
@@ -106,19 +131,46 @@ describe('Recipes', () => {
                     createdAt: expect.any(String)
                 })
             })
-        })
+        )
+
+        it('should responds with 200 status code and the object created when we send the correct object', () => 
+            agent.post('/recipe')
+            .send({
+                img: "https://tse4.mm.bing.net/th?id=OIP.uxQO-AiyqUVKO33Ndf-mUgHaE8&pid=Api",
+                name: "Arepas",
+                summary: "Arepas colombianas",
+                score: 88,
+                healthScore: 50,
+                instructions: "Se compran en colombia",
+                diets: [6,4]
+            })
+            .then(res => {
+                expect(res.body).toEqual({
+                    isDB: true,
+                    id: 2,
+                    img: "https://tse4.mm.bing.net/th?id=OIP.uxQO-AiyqUVKO33Ndf-mUgHaE8&pid=Api",
+                    name: "Arepas",
+                    summary: "Arepas colombianas",
+                    score: 88,
+                    healthScore: 50,
+                    instructions: "Se compran en colombia",
+                    updatedAt: expect.any(String),
+                    createdAt: expect.any(String)
+                })
+            })
+        )
 
         it('should responds with 400 status when body is empty', () => agent.post('/recipe').expect(400));
 
-        it('should responds with the message "adios" when body is empty', () => {
+        it('should responds with the message "adios" when body is empty', () => 
             agent.post('/recipe')
             .send({})
             .then(res => {
                 expect(res.body.msg).toMatch("adios")
             })
-        })
+        )
 
-        it('should responds with the message "adios" when any key is not valid', () => {
+        it('should responds with the message "adios" when any key is not sended', () =>
             agent.post('/recipe')
             .send({
                 name: "Tacos al pastor",
@@ -129,7 +181,41 @@ describe('Recipes', () => {
             .then(res => {
                 expect(res.body.msg).toMatch("adios")
             })
-        })
+        )
+    })
+
+    describe('GET /recipes', () => {
+        it('should responds with an array with 102 elements at the beginig', () => 
+            agent.get('/recipes')
+            .then(res => {
+                expect(res.body.length).toBe(102)
+            })
+        )
+        
+        it('shoudl responds with and array and in the first position should be the recipe creaded, and should have the propertys', () => 
+            agent.get('/recipes')
+            .then(res => {
+                expect(res.body[0]).toHaveProperty('id','name','img','score','diets')
+            })
+        )
+
+        it('should responds with and array and in the first position should be an object like this: {}', () =>
+            agent.get('/recipes')
+            .then(res => {
+                expect(res.body[0]).toEqual(
+                    {
+                        id: 1,
+                        name: "Tacos al pastor",
+                        img: "https://tse3.mm.bing.net/th?id=OIP.y-dXCFWoMM_DmNI5tfyiHgHaE8&pid=Api",
+                        score: 100,
+                        diets: [
+                            "gluten free",
+                            "ketogenic"
+                        ]
+                    },
+                )
+            })
+        )
     })
 });
 
