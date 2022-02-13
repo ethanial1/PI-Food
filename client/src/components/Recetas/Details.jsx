@@ -17,7 +17,7 @@ const Details = () => {
     
     return (
         <>
-        <img src={recipeDetails.img} alt="" className={st.back}/>
+        <img src={recipeDetails.img} alt="imagen receta" className={st.back}/>
         <section className={st.glass}>
                 <Nav />
             <div className={st.details}>
