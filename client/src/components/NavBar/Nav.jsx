@@ -1,9 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import img from '../../assets/logo.png';
+import { getAllRecipes } from '../../Redux/Actions/actions';
 import st from './NavBar.module.css'
 
 const Nav = () => {
+    const dispatch = useDispatch()
 
     return (
         <nav className={st.nav}>
@@ -12,7 +15,7 @@ const Nav = () => {
                     <NavLink to='/myrecetas'>Mis Recetas</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/home'>
+                    <NavLink to='/home' onClick={() => dispatch(getAllRecipes())}>
                         <img src={img} alt="" />
                     </NavLink>
                 </li>

@@ -4,6 +4,7 @@ import st from './FormCreate.module.css'
 import img from '../../assets/formImg.png'
 import { saveNewRecipe } from '../../Redux/Actions/actions';
 import Nav from '../NavBar/Nav';
+import Types from './Types';
 
 const initialForm = {
   img: "",
@@ -41,13 +42,12 @@ const validate = form => {
   return err;
 }
 
-// TODO cambia el estilo de la vista del formualrio
 const FormCreate = () => {
   const [form, setForm] = useState(initialForm)
   const [error, setError] = useState({})
-
+  
+  const recipeCreated = useSelector(state => state.recipeCreated)
   const dispatch = useDispatch()
-  const types = useSelector(state => state.types)
 
   const handleChange = e => {
     setForm({
@@ -63,14 +63,24 @@ const FormCreate = () => {
     }))
   }
 
-  const handleChecked = e => {
-    if(e.target.checked) {
-      form.diets.push(e.target.name)
-    } else {
-      const indice = form.diets.indexOf(e.target.name);
-      form.diets.splice(indice, 1);
+  const handleRemoveType = id => {
+    setForm({
+      ...form, 
+      diets: form.diets.filter(diet => diet.id !== id)
+    })
+  }
+
+  const handleAddType = obj => {
+    const index = form.diets.map( diet => diet.id ).indexOf(obj.id);
+    if(index < 0) {
+      setForm({
+        ...form,
+        diets: [...form.diets, obj]
+      })
     }
   }
+
+
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -124,15 +134,8 @@ const FormCreate = () => {
               </div>
               <div className={st.group}>
                 <label htmlFor="dietas">Dietas <span>*</span></label>
-                <div className={st.check}>
-                  {
-                    types.map(type => (
-                      <label key={type.id} htmlFor="receta1">
-                        <input type="checkbox" name={type.id} onChange={handleChecked}/>
-                        {type.nombre}
-                      </label>
-                    ))
-                  }
+                <div className={st.types_group}>
+                  <Types handleRemoveType={handleRemoveType} handleAddType={handleAddType} diets={form.diets}/>
                 </div>
                 { error.diets && <span>{error.diets}</span> }
               </div>
@@ -143,6 +146,16 @@ const FormCreate = () => {
         <div className={st.img}>
         <img src={img} alt="" />
       </div>
+      {
+        Object.keys(recipeCreated).length > 0 && (
+          <div className={st.msg}>
+            <h5>Receta creada</h5>
+            <div>
+              <span>{recipeCreated.name}</span>
+            </div>
+          </div>
+        )
+      }
       </div>
     </>
   ) 

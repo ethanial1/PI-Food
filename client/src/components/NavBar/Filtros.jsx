@@ -1,6 +1,6 @@
 import React, { useEffect }  from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTypesRecipe, sortRecipesBy } from '../../Redux/Actions/actions';
+import { getTypesRecipe, sortRecipesBy, filterBy } from '../../Redux/Actions/actions';
 import st from './NavBar.module.css'
 
 const Filtros = () => {
@@ -13,6 +13,10 @@ const Filtros = () => {
 
     const handleSortDiet = e => {
         dispatch(sortRecipesBy(e.target.value))
+    }
+
+    const handleFilterBy = e => {
+        dispatch(filterBy(e.target.value))
     }
 
     return (
@@ -28,7 +32,7 @@ const Filtros = () => {
                     <option value="points-ASC">Lowest to highest score</option>
                     <option value="points-DESC">Highest to lowest score</option>
                 </select>
-                <select name="diets" id="diets" defaultValue="DEFAULT"  onChange={e => handleSortDiet(e)}>
+                <select name="diets" id="diets" defaultValue="DEFAULT"  onChange={e => handleFilterBy(e)}>
                     <option value="DEFAULT" disabled>Type of Diet</option>
                     {
                         types.length > 0 ? types.map(type => (<option key={type.id} value={type.nombre}>{type.nombre}</option>)) : <option>Loading....</option>

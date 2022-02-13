@@ -2,6 +2,8 @@ export const GET_ALL_RECIPES = "GET_ALL_RECIPES";
 export const GET_RECIPES_BY_NAME = "GET_RECIPES_BY_NAME";
 export const GET_DETAILS_RECIPE = "GET_DETAILS_RECIPE";
 export const GET_TYPES_RECIPE = "GET_TYPES_RECIPE";
+export const CREATE_RECIPE = "CREATE_RECIPE";
+export const FILTER_RECIPES = "FILTER_RECIPES"
 export const SORT_RECIPES = "SORT_RECIPES";
 
 export const getAllRecipes = () => dispatch => {
@@ -55,6 +57,10 @@ export const getTypesRecipe = () => dispatch => {
 }
 
 export const saveNewRecipe = form => dispatch => {
+    form = {
+        ...form,
+        diets: form.diets.map(diet => diet.id)
+    }
     return (
         fetch('http://localhost:3001/recipe', {
             method: 'POST',
@@ -64,7 +70,10 @@ export const saveNewRecipe = form => dispatch => {
             body: JSON.stringify(form)
         })
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(json => dispatch({
+            type: CREATE_RECIPE,
+            payload: json
+        }))
         .catch(error => console.log(error))
     )
 }
@@ -74,5 +83,12 @@ export const sortRecipesBy = orden => {
     return {
         type: SORT_RECIPES,
         payload: orden
+    }
+}
+
+export const filterBy = type => {
+    return {
+        type: FILTER_RECIPES,
+        payload: type
     }
 }

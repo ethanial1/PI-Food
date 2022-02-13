@@ -52,6 +52,7 @@ const getTypes = async (req, res) => {
 const saveNewRecipe = async (req, res) => {
     try {
         const { img, name, summary, score, healthScore, instructions, diets } = req.body;
+        console.log(diets)
         //const img = req.file.filename;
         if(!name || !summary || !score || !healthScore || !instructions || !img || !diets) {
             //Eliminar la imagen que se guardo y lanzar el error // ----> no aplica debido a que ahora recibimos una url y no el archivo.

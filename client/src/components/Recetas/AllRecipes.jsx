@@ -9,12 +9,12 @@ import st from './Recetas.module.css'
 
 const AllRecipes = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const { allRecipes } = useSelector(state => state);
+    const { allRecipes, recipesFiltered } = useSelector(state => state);
     const dispatch = useDispatch();
 
     const lastPage = currentPage * 9;
     const firstIndex = lastPage - 9;
-    const currentRecipes = allRecipes.slice(firstIndex, lastPage);
+    const currentRecipes = recipesFiltered.length > 0 ? recipesFiltered.slice(firstIndex, lastPage) : allRecipes.slice(firstIndex, lastPage);
 
     useEffect(() => {
         dispatch(getAllRecipes())
@@ -26,21 +26,21 @@ const AllRecipes = () => {
         <>
             <section className={st.wrapper}>
                 {
-                    currentRecipes.length > 0 ?
-                        currentRecipes.map(recipe => (
-                            <RecetaCard 
+                
+                    currentRecipes.map(recipe => (
+                        <RecetaCard 
                             key={`${recipe.id}`}
                             id={recipe.id}
                             titulo={recipe.name}
                             tipos={recipe.diets}
                             img={recipe.img}/>
-                        ))
-                    : <span>Loading....</span>
+                    ))
+                    
                 }
             </section>
             <Paginado 
                 recipesPerPage={9}
-                allRecipes={allRecipes.length}
+                allRecipes={ recipesFiltered.length > 0 ? recipesFiltered.length : allRecipes.length}
                 paginado={handlePaginado}
             />
         </>
