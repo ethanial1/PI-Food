@@ -14,7 +14,7 @@ const Details = () => {
     useEffect(() => {
         dispatch(getDetailsRecipe(id))
     }, [dispatch, id]);
-    
+    console.log(recipeDetails)
     return (
         <>
         <img src={recipeDetails.img} alt="imagen receta" className={st.back}/>
@@ -30,7 +30,8 @@ const Details = () => {
                         <div className={st.attributes}>
                             <h4>score <span>{recipeDetails.score}</span></h4>
                             <h4>healthyscore <span>{recipeDetails.healthScore}</span></h4>
-                            <h5>{recipeDetails.diets?.join(', ')}</h5>
+                            <h5>Diets: {recipeDetails.diets?.join(', ')}</h5>
+                            { recipeDetails.dishTypes?.length && <h4>Dish Types: {recipeDetails.dishTypes?.join(', ')}</h4>}
                         </div>
                     </div>
                 </div>
