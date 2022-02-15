@@ -22,16 +22,19 @@ const getAllRecipesAPI = async () => {
 
 const getRecipesByNameAPI = async (name) => {
     try {
-        let recetas = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&titleMatch=${name}&number=100`);
-        recetas = recetas.data.results.map(res => (
-            {
-                id: `${res.id}-API`,
-                name: res.title,
-                img: res.image,
-                score: res.spoonacularScore,
-                diets: res.diets
-            }
-        ));
+        // let recetas = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY2}&addRecipeInformation=true&titleMatch=${name}&number=100`);
+        // recetas = recetas.data.results.map(res => (
+        //     {
+        //         id: `${res.id}-API`,
+        //         name: res.title,
+        //         img: res.image,
+        //         score: res.spoonacularScore,
+        //         diets: res.diets
+        //     }
+        // ));
+
+        let recetas = await getAllRecipesAPI()
+        recetas = recetas.filter(receta => receta.name.toLowerCase().includes(name.toLowerCase()))
 
         return recetas;
 
