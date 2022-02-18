@@ -27,7 +27,9 @@
 
 .landing > span {
     width: 50%;
-    font-family: 'Lobster', cursive;
+    font-family: sans-serif;
+    display: block;
+    margin-top: 1rem;
 }
 
 .btn {
@@ -39,4 +41,8 @@
     background: #201f32;
     color: white;
     padding: 10px 25px;
+}
+
+.imgRes {
+    width: 300px;
 }

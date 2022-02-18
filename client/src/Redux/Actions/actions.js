@@ -5,6 +5,7 @@ export const GET_TYPES_RECIPE = "GET_TYPES_RECIPE";
 export const CREATE_RECIPE = "CREATE_RECIPE";
 export const FILTER_RECIPES = "FILTER_RECIPES"
 export const SORT_RECIPES = "SORT_RECIPES";
+export const RESET_RECIPE = "RESET_RECIPE"
 
 export const getAllRecipes = () => dispatch => {
     return (
@@ -90,5 +91,11 @@ export const filterBy = type => {
     return {
         type: FILTER_RECIPES,
         payload: type
+    }
+}
+
+export const resetRecipeDetail = () => {
+    return {
+        type: RESET_RECIPE
     }
 }

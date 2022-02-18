@@ -11,9 +11,6 @@ const Nav = () => {
     return (
         <nav className={st.nav}>
             <ul>
-                <li className={st.link}>
-                    <NavLink to='/myrecetas'>Mis Recetas</NavLink>
-                </li>
                 <li>
                     <NavLink to='/home' onClick={() => dispatch(getAllRecipes())}>
                         <img src={img} alt="" />

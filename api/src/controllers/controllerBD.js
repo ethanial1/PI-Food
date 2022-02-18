@@ -1,29 +1,49 @@
 const { Recipe, Diet, Op } = require('../db');
 
-const getAllRecipiesDB = async () => {
+const getAllRecipiesDB = () => {
     try {
-        const recipesData = await Recipe.findAll(
-            {
-                attributes: ['id','name','img','score'],
-                include: {
-                    model: Diet,
-                    attributes: ['nombre'],
-                    through:{
-                        attributes: []
-                    }
+        // const recipesData = await Recipe.findAll(
+        //     {
+        //         attributes: ['id','name','img','score'],
+        //         include: {
+        //             model: Diet,
+        //             attributes: ['nombre'],
+        //             through:{
+        //                 attributes: []
+        //             }
+        //         }
+        //     }
+        // );
+        
+        // const recipes = recipesData.map(receta => ({
+        //     id: receta.id,
+        //     name: receta.name,
+        //     img: receta.img,
+        //     score: receta.score,
+        //     diets: receta.diets.map(dieta => dieta.nombre)
+        // }))
+
+        // return recipes;
+        return Recipe.findAll({
+            attributes: ['id','name','img','score'],
+            include: {
+                model: Diet,
+                attributes: ['nombre'],
+                through: {
+                    attributes: []
                 }
             }
-        );
-        
-        const recipes = recipesData.map(receta => ({
-            id: receta.id,
-            name: receta.name,
-            img: receta.img,
-            score: receta.score,
-            diets: receta.diets.map(dieta => dieta.nombre)
-        }))
+        }).then(recipesData => {
+            const recipes = recipesData.map(receta => ({
+                id: receta.id,
+                name: receta.name,
+                img: receta.img,
+                score: receta.score,
+                diets: receta.diets.map(dieta => dieta.nombre)
+            }))
 
-        return recipes;
+            return recipes;
+        })
 
     } catch (error) {
         console.log(error);

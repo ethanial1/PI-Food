@@ -12,8 +12,9 @@ const getRecipes = async (req, res) => {
             return;
         }
 
-        const todasRecetas = await getAllRecipes();
-        res.json(todasRecetas);
+        //const todasRecetas = await getAllRecipes();
+        //res.json(todasRecetas);
+        getAllRecipes().then(respuesta => res.json(respuesta))
         
     } catch(error) {
         console.log(error)

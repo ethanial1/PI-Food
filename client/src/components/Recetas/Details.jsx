@@ -2,7 +2,7 @@ import React,{ useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom';
-import { getDetailsRecipe } from '../../Redux/Actions/actions';
+import { getDetailsRecipe, resetRecipeDetail } from '../../Redux/Actions/actions';
 import st from './Details.module.css'
 import Nav from '../NavBar/Nav';
 
@@ -13,8 +13,8 @@ const Details = () => {
 
     useEffect(() => {
         dispatch(getDetailsRecipe(id))
+        return () => dispatch(resetRecipeDetail())
     }, [dispatch, id]);
-    console.log(recipeDetails)
     return (
         <>
         <img src={recipeDetails.img} alt="imagen receta" className={st.back}/>
