@@ -9,7 +9,7 @@ export const RESET_RECIPE = "RESET_RECIPE"
 
 export const getAllRecipes = () => dispatch => {
     return (
-        fetch("http://localhost:3001/recipes")
+        fetch("https://back-end-food.herokuapp.com/recipes")
         .then(res => res.json())
         .then(json => dispatch({
             type: GET_ALL_RECIPES,
@@ -23,7 +23,7 @@ export const getAllRecipes = () => dispatch => {
 
 export const getRecipesByName = name => dispatch => {
     return (
-        fetch(`http://localhost:3001/recipes?name=${name}`)
+        fetch(`https://back-end-food.herokuapp.com/recipes?name=${name}`)
         .then(res => res.json())
         .then(json => dispatch({
             type: GET_RECIPES_BY_NAME,
@@ -37,7 +37,7 @@ export const getDetailsRecipe = id => dispatch => {
     let [ idu, type ] = id.split('-')
     if(!type) type = 'DB'
     return (
-        fetch(`http://localhost:3001/recipes/${idu}-${type}`)
+        fetch(`https://back-end-food.herokuapp.com/recipes/${idu}-${type}`)
         .then(res => res.json())
         .then(json => dispatch({
             type: GET_DETAILS_RECIPE,
@@ -48,7 +48,7 @@ export const getDetailsRecipe = id => dispatch => {
 
 export const getTypesRecipe = () => dispatch => {
     return (
-        fetch('http://localhost:3001/types')
+        fetch('https://back-end-food.herokuapp.com/types')
         .then(res => res.json())
         .then(json => dispatch({
             type: GET_TYPES_RECIPE,
@@ -63,7 +63,7 @@ export const saveNewRecipe = form => dispatch => {
         diets: form.diets.map(diet => diet.id)
     }
     return (
-        fetch('http://localhost:3001/recipe', {
+        fetch('https://back-end-food.herokuapp.com/recipe', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
